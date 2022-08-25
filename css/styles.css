@@ -5,3 +5,19 @@
     border: 2px solid yellowgreen;
     background-color: antiquewhite;
 }
+
+.darajalar{
+    
+    position: relative;
+    margin-left: 40%;
+}
+
+#mybtn{
+    position: absolute;
+    margin-left: 60%;
+    width: auto;
+    height: 40px;
+    background-color: azure;
+    border: 2px solid yellowgreen;
+    border-radius: 10px;
+}
