@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <script src="./js/index.js"></script>
-        
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <meta name="theme-color" content="#000000"/>
+        <meta name="description" content="This game is created using pure JavaScript"/>
+        <script type="module" src="./js/index.js"></script>
+        <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
         
 
         <h3>Ancient game</h3>
         <p>This game uses randomizing methods on numbers </p>
+
+        <div class="kartalar" id="kartalar">
+            
+        </div>
+        
+        
+
         <div class="main">
             <button onclick="showalert()" id="mybtn"></button>
         </div>
-
         <p id="cardID">Hello</p>
+        
 
         <button onclick="showdiffs()" id="diffs">Show difficulties</button>
+
+        
         
     </body>
 </html>
