@@ -1,4 +1,4 @@
-import brown1 from './brown1.png';
+/*import brown1 from './brown1.png';
 import brown2 from './brown2.png';
 import brown3 from './brown3.png';
 import brown4 from './brown4.png';
@@ -18,30 +18,30 @@ import brown17 from './brown17.png';
 import brown18 from './brown18.png';
 import brown19 from './brown19.png';
 import brown20 from './brown20.png';
-import brown21 from './brown21.png';
+import brown21 from './brown21.png'; */
 
 const cards = {
-  brown1,
-  brown2,
-  brown3,
-  brown4,
-  brown5,
-  brown6,
-  brown7,
-  brown8,
-  brown9,
-  brown10,
-  brown11,
-  brown12,
-  brown13,
-  brown14,
-  brown15,
-  brown16,
-  brown17,
-  brown18,
-  brown19,
-  brown20,
-  brown21,
+  brown1: "brown1",
+  brown2: "brown2",
+  brown3: "brown3",
+  brown4: "brown4",
+  brown5: "brown5",
+  brown6: "brown6",
+  brown7: "brown7",
+  brown8: "brown8",
+  brown9: "brown9",
+  brown10: "brown10",
+  brown11: "brown11",
+  brown12: "brown12",
+  brown13: "brown13",
+  brown14: "brown14",
+  brown15: "brown15",
+  brown16: "brown16",
+  brown17: "brown17",
+  brown18: "brown18",
+  brown19: "brown19",
+  brown20: "brown20",
+  brown21: "brown21",
 }
 
 export default cards

@@ -22,8 +22,8 @@ const ancientsData = [
     },
   },
   {
-    id: 'cthulhu',
-    name: 'cthulhu',
+    id: 'ktulxu',
+    name: 'ktulxu',
     cardFace: Ancients.cthulhu,
     firstStage: {
       greenCards: 0,

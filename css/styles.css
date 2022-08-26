@@ -21,3 +21,46 @@
     border: 2px solid yellowgreen;
     border-radius: 10px;
 }
+
+.cardstable{
+    position: absolute;
+    right: 50px;
+    top: 100px;
+    width: 200px;
+    border: 2px solid tomato;
+}
+
+.sideBy{
+    display: flex;
+    flex-direction: row;
+}
+
+.greenC{
+    margin: 10px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: lightgreen;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.redC{
+    margin: 10px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color:tomato;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.blueC{
+    margin: 10px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: skyblue;
+    border-radius: 50%;
+    text-align: center;
+}
