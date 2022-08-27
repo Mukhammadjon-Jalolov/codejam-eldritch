@@ -120,6 +120,11 @@ function whichLevel(lvl, id, difficultyID){
 }
 
 function bigFilter(difficultyID, colorCard, howmany){
+    function shuffle(array){
+        array.sort(() => Math.random() - 0.5);
+    }
+    
+
     let filteredArr = [];
 
     if(difficultyID === "very_easy"){
@@ -134,18 +139,124 @@ function bigFilter(difficultyID, colorCard, howmany){
                 return item.difficulty === "normal";
             })
             for(let i = 0; i < difference; i++){
-                let tempIndex = Math.floor(Math.random() * (newLevel.length) + 1)
+                let tempIndex = Math.floor(Math.random() * (newLevel.length + 1) + 0)
 
+                // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
                 if(!filteredArr.includes(newLevel[tempIndex])){
                     filteredArr.push(newLevel[tempIndex])
                 } else {
                     filteredArr.push(newLevel[0])
                 }
-                //filteredArr.includes(newLevel[tempIndex]) ? filteredArr.push(newLevel[0]) : filteredArr.push(newLevel[tempIndex]);
-
             }
+            shuffle(filteredArr);
+            
+        } else {
+            let difference = filteredArr.length - howmany;
+            filteredArr.splice(0, difference);
         }
     }
+    
+    else if(difficultyID === "easy"){
+        filteredArr = colorCard.filter((el) => {
+            return el.difficulty !== "hard";
+        })
+        shuffle(filteredArr);
+
+        if(howmany > filteredArr.length){
+            let difference = howmany - filteredArr.length;
+            
+            for(let i = 0; i < difference; i++){
+                let tempIndex = Math.floor(Math.random() * (filteredArr.length + 1) + 0)
+
+                // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
+                if(!filteredArr.includes(filteredArr[tempIndex])){
+                    filteredArr.push(filteredArr[tempIndex])
+                } else {
+                    filteredArr.push(filteredArr[0])
+                }
+            }
+        } else {
+            let difference = filteredArr.length - howmany;
+            filteredArr.splice(0, difference);
+        }
+    }
+
+    else if(difficultyID === "normal"){
+        filteredArr = colorCard;
+        shuffle(filteredArr);
+
+        if(howmany > filteredArr.length){
+            let difference = howmany - filteredArr.length;
+            
+            for(let i = 0; i < difference; i++){
+                let tempIndex = Math.floor(Math.random() * (filteredArr.length + 1) + 0)
+
+                // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
+                if(!filteredArr.includes(newLevel[tempIndex])){
+                    filteredArr.push(filteredArr[tempIndex])
+                } else {
+                    filteredArr.push(filteredArr[0])
+                }
+            }
+        } else {
+            let difference = filteredArr.length - howmany;
+            filteredArr.splice(0, difference);
+        }
+    }
+
+    else if(difficultyID === "hard"){
+        filteredArr = colorCard.filter((el) => {
+            return el.difficulty !== "easy";
+        })
+        shuffle(filteredArr);
+
+        if(howmany > filteredArr.length){
+            let difference = howmany - filteredArr.length;
+            
+            for(let i = 0; i < difference; i++){
+                let tempIndex = Math.floor(Math.random() * (filteredArr.length + 1) + 0)
+
+                // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
+                if(!filteredArr.includes(filteredArr[tempIndex])){
+                    filteredArr.push(filteredArr[tempIndex])
+                } else {
+                    filteredArr.push(filteredArr[0])
+                }
+            }
+        } else {
+            let difference = filteredArr.length - howmany;
+            filteredArr.splice(0, difference);
+        }
+    }
+
+    else if(difficultyID === "very_hard"){
+        filteredArr = colorCard.filter((el) => {
+            return el.difficulty === "hard";
+        })
+
+        if(howmany > filteredArr.length){
+            let difference = howmany - filteredArr.length;
+            
+            let newLevel = colorCard.filter((item) => {
+                return item.difficulty === "normal";
+            })
+            for(let i = 0; i < difference; i++){
+                let tempIndex = Math.floor(Math.random() * (newLevel.length + 1) + 0)
+
+                // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
+                if(!filteredArr.includes(newLevel[tempIndex])){
+                    filteredArr.push(newLevel[tempIndex])
+                } else {
+                    filteredArr.push(newLevel[0])
+                }
+            }
+            shuffle(filteredArr);
+
+        } else {
+            let difference = filteredArr.length - howmany;
+            filteredArr.splice(0, difference);
+        }
+    } 
 
     console.log("Final cards for very easy level, color " + colorCard[0].color + " : ");
     console.log(filteredArr);
