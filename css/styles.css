@@ -1,3 +1,8 @@
+body{
+    background-image: url('../assets/home.png');
+    background-size: cover;
+}
+
 .kartalar{
     display: flex;
     flex-direction: row;
@@ -15,6 +20,7 @@
     position: absolute;
     right: 240px;
     float: right;
+    visibility: hidden;
 }
 
 .cardstable{
@@ -23,17 +29,20 @@
     width: 200px;
     border: 2px solid gray;
     border-radius: 20px;
+    visibility: hidden;
+    color: white;
 }
 
 #mybtn{
     position: absolute;
-    top: 430px;
-    right: 240px;
+    top: 420px;
+    right: 40px;
     width: auto;
     height: 40px;
     background-color: azure;
     border: 2px solid yellowgreen;
     border-radius: 10px;
+    visibility: hidden;
 }
 
 
@@ -75,4 +84,34 @@
 
 #showlevel {
     color: orange;
+}
+
+.gamecard {
+    background-image: url('../assets/mythicCardBackground.png');
+    background-size: contain;
+    display: block;
+    position: absolute;
+    top: 400px;
+    right: 250px;
+    width: 149px;
+    height: 220px;
+    visibility: hidden;
+}
+
+.gamecard:hover {
+    width: 150px;
+    height: 221px;
+}
+
+.activecard {
+    background-image: url('../assets/mythicCardBackground.png');
+    background-size: contain;
+    display: block;
+    position: absolute;
+    top: 400px;
+    right: 410px;
+    width: 149px;
+    height: 220px;
+    visibility: hidden;
+    transition-duration: 3s;
 }

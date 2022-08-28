@@ -5,8 +5,9 @@ import bluecardsData from "../data/mythicCards/blue/index.js";
 import browncardsData from "../data/mythicCards/brown/index.js";
 import greencardsData from "../data/mythicCards/green/index.js";
 
-console.log(difficulties);
-console.log(ancientsData);
+// Testing
+//console.log(difficulties);
+//console.log(ancientsData);
 
 let current1stage;
 let current2stage;
@@ -16,14 +17,33 @@ let neededGreens = 0;
 let neededBlues = 0;
 let neededBrowns = 0;
 
+let newGreens;
+let newBlues;
+let newBrowns;
+
+let counter1;
+let counter2;
+let counter3;
+
+let gameArray = [];
+
 const btn = document.getElementById("mybtn");
 btn.textContent = "Замешать колоду";
 btn.addEventListener("click", startGame);
 
+const levelsPlaceholder = document.getElementById("darajalar");
+const cardsTable = document.getElementById("cardstableID");
+const gamecardEl = document.getElementById("gamecard");
+
+let firststage = document.getElementById("firststage").children;
+let secondstage = document.getElementById("secondstage").children;
+let thirdstage = document.getElementById("thirdstage").children;
+
+
+
 function startGame(){
-    let firststage = document.getElementById("firststage").children;
-    let secondstage = document.getElementById("secondstage").children;
-    let thirdstage = document.getElementById("thirdstage").children;
+    cardsTable.style.visibility = "visible";
+    gamecardEl.style.visibility = "visible";
 
     firststage[0].textContent = current1stage.greenCards;
     firststage[1].textContent = current1stage.brownCards;
@@ -37,17 +57,138 @@ function startGame(){
     thirdstage[1].textContent = current3stage.brownCards;
     thirdstage[2].textContent = current3stage.blueCards;
 
-    /*
-    for(let i = 0; i < firststage.length; i++){
-        firststage[i].textContent = i;
-    }*/
-
     console.log("Start the Game");
+}
+
+const giveCardEelement = document.getElementById("gamecard");
+giveCardEelement.addEventListener("click", giveCards);
+
+function summing(stage){
+    let y = 0;
+    for(let x in stage){
+        y += stage[x];
+    }
+    return y;
+}
+
+function giveCards(){
+
+    let actuelCard;
+    const colorArray = ["greenCards", "brownCards", "blueCards"];
+    const colorImgs = ["green", "brown", "blue"];
+    let realcolor;
+
+    let randomColor;
+
+    if(counter1 > 0){
+        //randomColor = Math.floor(Math.random() * 2 + 0);    // 0 chiqdi desak
+        
+        if(gameArray[0].greenCards > 0){
+            actuelCard = newGreens.shift()
+            realcolor = "green";
+            gameArray[0].greenCards--;
+            firststage[0].textContent = gameArray[0].greenCards;
+
+        } else if(gameArray[0].greenCards === 0){
+            if(gameArray[0].brownCards > 0){
+                actuelCard = newBrowns.shift()
+                realcolor = "brown";
+                gameArray[0].brownCards--;
+                firststage[1].textContent = gameArray[0].brownCards;
+
+            } else if(gameArray[0].brownCards === 0){
+                if(gameArray[0].blueCards > 0){
+                    actuelCard = newBlues.shift()
+                    realcolor = "blue";
+                    gameArray[0].blueCards--;
+                    firststage[2].textContent = gameArray[0].blueCards;
+
+                }
+            }
+        }
+
+        console.log("First stage " + counter1)
+        counter1--;
+    } 
+    
+    else if(counter2 > 0){
+        if(gameArray[1].greenCards > 0){
+            actuelCard = newGreens.shift()
+            realcolor = "green";
+            gameArray[1].greenCards--;
+            secondstage[0].textContent = gameArray[1].greenCards;
+
+        } else if(gameArray[1].greenCards === 0){
+            if(gameArray[1].brownCards > 0){
+                actuelCard = newBrowns.shift()
+                realcolor = "brown";
+                gameArray[1].brownCards--;
+                secondstage[1].textContent = gameArray[1].brownCards;
+
+            } else if(gameArray[1].brownCards === 0){
+                if(gameArray[1].blueCards > 0){
+                    actuelCard = newBlues.shift()
+                    realcolor = "blue";
+                    gameArray[1].blueCards--;
+                    secondstage[2].textContent = gameArray[1].blueCards;
+                }
+            }
+        }
+
+        console.log("Second stage " + counter2)
+        counter2--;
+    } 
+    
+    else if(counter3 > 0){
+        if(gameArray[2].greenCards > 0){
+            actuelCard = newGreens.shift()
+            realcolor = "green";
+            gameArray[2].greenCards--;
+            thirdstage[0].textContent = gameArray[2].greenCards;
+
+        } else if(gameArray[2].greenCards === 0){
+            if(gameArray[2].brownCards > 0){
+                actuelCard = newBrowns.shift()
+                realcolor = "brown";
+                gameArray[2].brownCards--;
+                thirdstage[1].textContent = gameArray[2].brownCards;
+
+            } else if(gameArray[2].brownCards === 0){
+                if(gameArray[2].blueCards > 0){
+                    actuelCard = newBlues.shift()
+                    realcolor = "blue";
+                    gameArray[2].blueCards--;
+                    thirdstage[2].textContent = gameArray[2].blueCards;
+                }
+            }
+        }
+
+        console.log("Third stage " + counter3)
+        counter3--;
+    }
+
+    else {
+        gamecardEl.style.visibility = "hidden";
+        console.log("GAME IS OVER")
+    }
+
+    //Testing
+    console.log(counter1)
+    console.log(counter2)
+    console.log(counter3)
+    
+
+    let activekarta = document.getElementById("activecard");
+    activekarta.style.visibility = "visible";
+    activekarta.style.backgroundImage = "url('../assets/MythicCards/" + realcolor + "/" + actuelCard.cardFace + ".png')";
+    
 }
 
 function whichCard(par, id){
     //console.log(par)
     //console.log(id)
+
+    levelsPlaceholder.style.visibility = "visible";
 
     let allCards = document.querySelector(".kartalar").children;
     for(let i = 0; i < allCards.length; i++){
@@ -57,35 +198,43 @@ function whichCard(par, id){
     let selectedCard = document.getElementById(id);
     selectedCard.style.border = "2px solid orange";
 
-ancientsData.forEach((item) => {
-    if(item.name === par){
+    ancientsData.forEach((item) => {
+        if(item.name === par){
 
-        localStorage.setItem("ancients", JSON.stringify(item.name))
-        localStorage.setItem("firstStage", JSON.stringify(item.firstStage))
-        localStorage.setItem("secondStage", JSON.stringify(item.secondStage))
-        localStorage.setItem("thirdStage", JSON.stringify(item.thirdStage))
+            localStorage.setItem("ancients", JSON.stringify(item.name))
+            localStorage.setItem("firstStage", JSON.stringify(item.firstStage))
+            localStorage.setItem("secondStage", JSON.stringify(item.secondStage))
+            localStorage.setItem("thirdStage", JSON.stringify(item.thirdStage))
 
+            current1stage = JSON.parse(localStorage.getItem("firstStage"));
+            current2stage = JSON.parse(localStorage.getItem("secondStage"));
+            current3stage = JSON.parse(localStorage.getItem("thirdStage"));
 
-        current1stage = JSON.parse(localStorage.getItem("firstStage"));
-        current2stage = JSON.parse(localStorage.getItem("secondStage"));
-        current3stage = JSON.parse(localStorage.getItem("thirdStage"));
+            neededGreens = item.firstStage.greenCards + item.secondStage.greenCards + item.thirdStage.greenCards;
+            neededBlues = item.firstStage.blueCards + item.secondStage.blueCards + item.thirdStage.blueCards;
+            neededBrowns = item.firstStage.brownCards + item.secondStage.brownCards + item.thirdStage.brownCards;
 
-        neededGreens = item.firstStage.greenCards + item.secondStage.greenCards + item.thirdStage.greenCards;
-        neededBlues = item.firstStage.blueCards + item.secondStage.blueCards + item.thirdStage.blueCards;
-        neededBrowns = item.firstStage.brownCards + item.secondStage.brownCards + item.thirdStage.brownCards;
+            counter1 = summing(current1stage);
+            counter2 = summing(current2stage);
+            counter3 = summing(current3stage);
 
-        console.log("Greens total: " + neededGreens);
-        console.log("Blues total: " + neededBlues);
-        console.log("Browns total: " + neededBrowns);
-    }
-})
+            console.log("Greens total: " + neededGreens);
+            console.log("Blues total: " + neededBlues);
+            console.log("Browns total: " + neededBrowns);
 
+            gameArray.push(current1stage);
+            gameArray.push(current2stage);
+            gameArray.push(current3stage);
 
+        }
+    })
 }
 
 function whichLevel(lvl, id, difficultyID){
     //console.log(lvl)
     //console.log(difficultyID)
+
+    btn.style.visibility = "visible";
 
     let allCards = document.querySelector(".darajalar").children;
     for(let i = 0; i < allCards.length; i++){
@@ -101,21 +250,9 @@ function whichLevel(lvl, id, difficultyID){
     gameLevel.textContent = "Уровень: " + selectedLevel.textContent;
     gameLevel.style.color = "#00EE77";
 
-    /*
-    var newBlues = bluecardsData.filter((card) => {
-        return card.difficulty === difficultyID;
-    }) */
-
-    
-
-    let newGreens = bigFilter(difficultyID, greencardsData, neededGreens)
-    let newBlues = bigFilter(difficultyID, bluecardsData, neededBlues);
-    let newBrowns = bigFilter(difficultyID, browncardsData, neededBrowns)
-    /*browncardsData
-    greencardsData*/
-    neededGreens
-    neededBlues
-    neededBrowns
+    newGreens = bigFilter(difficultyID, greencardsData, neededGreens)
+    newBlues = bigFilter(difficultyID, bluecardsData, neededBlues);
+    newBrowns = bigFilter(difficultyID, browncardsData, neededBrowns)
 
 }
 
@@ -123,7 +260,6 @@ function bigFilter(difficultyID, colorCard, howmany){
     function shuffle(array){
         array.sort(() => Math.random() - 0.5);
     }
-    
 
     let filteredArr = [];
 
@@ -139,7 +275,7 @@ function bigFilter(difficultyID, colorCard, howmany){
                 return item.difficulty === "normal";
             })
             for(let i = 0; i < difference; i++){
-                let tempIndex = Math.floor(Math.random() * (newLevel.length + 1) + 0)
+                let tempIndex = Math.floor(Math.random() * (newLevel.length) + 0)
 
                 // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
                 if(!filteredArr.includes(newLevel[tempIndex])){
@@ -166,7 +302,7 @@ function bigFilter(difficultyID, colorCard, howmany){
             let difference = howmany - filteredArr.length;
             
             for(let i = 0; i < difference; i++){
-                let tempIndex = Math.floor(Math.random() * (filteredArr.length + 1) + 0)
+                let tempIndex = Math.floor(Math.random() * (filteredArr.length) + 0)
 
                 // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
                 if(!filteredArr.includes(filteredArr[tempIndex])){
@@ -189,10 +325,10 @@ function bigFilter(difficultyID, colorCard, howmany){
             let difference = howmany - filteredArr.length;
             
             for(let i = 0; i < difference; i++){
-                let tempIndex = Math.floor(Math.random() * (filteredArr.length + 1) + 0)
+                let tempIndex = Math.floor(Math.random() * (filteredArr.length) + 0)
 
                 // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
-                if(!filteredArr.includes(newLevel[tempIndex])){
+                if(!filteredArr.includes(filteredArr[tempIndex])){
                     filteredArr.push(filteredArr[tempIndex])
                 } else {
                     filteredArr.push(filteredArr[0])
@@ -214,7 +350,7 @@ function bigFilter(difficultyID, colorCard, howmany){
             let difference = howmany - filteredArr.length;
             
             for(let i = 0; i < difference; i++){
-                let tempIndex = Math.floor(Math.random() * (filteredArr.length + 1) + 0)
+                let tempIndex = Math.floor(Math.random() * (filteredArr.length) + 0)
 
                 // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
                 if(!filteredArr.includes(filteredArr[tempIndex])){
@@ -241,7 +377,7 @@ function bigFilter(difficultyID, colorCard, howmany){
                 return item.difficulty === "normal";
             })
             for(let i = 0; i < difference; i++){
-                let tempIndex = Math.floor(Math.random() * (newLevel.length + 1) + 0)
+                let tempIndex = Math.floor(Math.random() * (newLevel.length) + 0)
 
                 // NEED TO PUSH ONLY THE UNIQUE ELEMENTS TO THE ARRAY
                 if(!filteredArr.includes(newLevel[tempIndex])){
@@ -256,18 +392,12 @@ function bigFilter(difficultyID, colorCard, howmany){
             let difference = filteredArr.length - howmany;
             filteredArr.splice(0, difference);
         }
-    } 
+    }
 
-    console.log("Final cards for very easy level, color " + colorCard[0].color + " : ");
-    console.log(filteredArr);
-
+    //console.log("Final cards for very easy level, color " + colorCard[0].color + " : ");
+    //console.log(filteredArr);
+    return filteredArr;
 }
-
-
-function showdiffs(){
-    console.log("difs")
-}
-
 
 
 const cardsPlaceholder = document.getElementById("kartalar");
@@ -293,8 +423,6 @@ for(let i = 0; i < ancientsData.length; i++){
     cardsPlaceholder.appendChild(oneCard);
 }
 
-const levelsPlaceholder = document.getElementById("darajalar");
-
 for(let i = 0; i < difficulties.length; i++){
     let oneLevel = document.createElement("div");
     oneLevel.style.border = "2px solid green";
@@ -302,7 +430,7 @@ for(let i = 0; i < difficulties.length; i++){
     oneLevel.style.height = "40px";
     oneLevel.style.width = "90px";
     oneLevel.style.borderRadius = "0 20px 20px 0"
-    oneLevel.style.margin = "10px 10px";
+    oneLevel.style.margin = "5px 10px";
     oneLevel.style.padding = "5px";
     oneLevel.style.backgroundColor = "lightblue";
     oneLevel.textContent = difficulties[i].name;
