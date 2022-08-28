@@ -426,7 +426,11 @@ for(let i = 0; i < ancientsData.length; i++){
     oneCard.style.margin = "10px";
     //oneCard.style.backgroundColor = "orange";
     let monsterName = ancientsData[i].name.charAt(0).toUpperCase() + ancientsData[i].name.slice(1);
-    oneCard.style.backgroundImage = "url('../assets/Ancients/"+ monsterName + ".png')";
+    
+    let str = "https://github.com/Mukhammadjon-Jalolov/codejam-eldritch/blob/main/assets/Ancients/" + monsterName + ".png?raw=true";
+    oneCard.style.backgroundImage = "url("+ str +")";
+    
+    //oneCard.style.backgroundImage = "url('../assets/Ancients/"+ monsterName + ".png')";
     oneCard.style.backgroundSize = "221px 287px";
     oneCard.textContent = monsterName;
     oneCard.style.textAlign = "center";
