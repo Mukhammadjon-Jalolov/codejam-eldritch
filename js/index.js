@@ -39,6 +39,7 @@ let firststage = document.getElementById("firststage").children;
 let secondstage = document.getElementById("secondstage").children;
 let thirdstage = document.getElementById("thirdstage").children;
 
+let activekarta = document.getElementById("activecard");
 
 
 function startGame(){
@@ -177,8 +178,6 @@ function giveCards(){
     console.log(counter2)
     console.log(counter3)
     
-
-    let activekarta = document.getElementById("activecard");
     activekarta.style.visibility = "visible";
     activekarta.style.backgroundImage = "url('../assets/MythicCards/" + realcolor + "/" + actuelCard.cardFace + ".png')";
     
@@ -192,7 +191,7 @@ function whichCard(par, id){
 
     let allCards = document.querySelector(".kartalar").children;
     for(let i = 0; i < allCards.length; i++){
-        allCards[i].style.border = "none";
+        allCards[i].style.border = "2px solid white";
     }
 
     let selectedCard = document.getElementById(id);
@@ -231,9 +230,24 @@ function whichCard(par, id){
 }
 
 function whichLevel(lvl, id, difficultyID){
-    //console.log(lvl)
-    //console.log(difficultyID)
+    cardsTable.style.visibility = "hidden";
+    gamecardEl.style.visibility = "hidden";
+    activekarta.style.visibility = "hidden";
 
+    current1stage = JSON.parse(localStorage.getItem("firstStage"));
+    current2stage = JSON.parse(localStorage.getItem("secondStage"));
+    current3stage = JSON.parse(localStorage.getItem("thirdStage"));
+    gameArray = [];
+    gameArray.push(current1stage);
+    gameArray.push(current2stage);
+    gameArray.push(current3stage);
+
+    counter1 = summing(current1stage);
+    counter2 = summing(current2stage);
+    counter3 = summing(current3stage);
+
+    console.log(gameArray);
+    
     btn.style.visibility = "visible";
 
     let allCards = document.querySelector(".darajalar").children;
@@ -404,7 +418,7 @@ const cardsPlaceholder = document.getElementById("kartalar");
 
 for(let i = 0; i < ancientsData.length; i++){
     let oneCard = document.createElement("div");
-    oneCard.style.border = "1px solid black";
+    oneCard.style.border = "2px solid white";
     oneCard.style.borderRadius = "15px";
     oneCard.style.position = "relative";
     oneCard.style.height = "287px";
