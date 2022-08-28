@@ -177,9 +177,12 @@ function giveCards(){
     console.log(counter1)
     console.log(counter2)
     console.log(counter3)
-    
+
     activekarta.style.visibility = "visible";
-    activekarta.style.backgroundImage = "url('../assets/MythicCards/" + realcolor + "/" + actuelCard.cardFace + ".png')";
+
+    let imgstr = "https://github.com/Mukhammadjon-Jalolov/codejam-eldritch/blob/main/assets/MythicCards/" + realcolor + "/" + actuelCard.cardFace + ".png?raw=true"
+    activekarta.style.backgroundImage = "url(" + imgstr +")";
+    //activekarta.style.backgroundImage = "url('../assets/MythicCards/" + realcolor + "/" + actuelCard.cardFace + ".png')";
     
 }
 
