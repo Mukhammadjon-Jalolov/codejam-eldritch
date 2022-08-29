@@ -41,6 +41,7 @@ let thirdstage = document.getElementById("thirdstage").children;
 
 let activekarta = document.getElementById("activecard");
 
+let gameover = document.getElementById("gameover");
 
 function startGame(){
     cardsTable.style.visibility = "visible";
@@ -335,6 +336,7 @@ function giveCards(){
     else {
         gamecardEl.style.visibility = "hidden";
         console.log("GAME IS OVER")
+        gameover.style.visibility = "visible";
     }
 
     //Testing

@@ -115,3 +115,11 @@ body{
     visibility: hidden;
     transition-duration: 1s;
 }
+
+.gameover {
+    position: absolute;
+    visibility: hidden;
+    top: 450px;
+    left: 150px;
+    color: tomato;
+}
