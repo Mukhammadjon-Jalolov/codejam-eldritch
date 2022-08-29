@@ -72,18 +72,139 @@ function summing(stage){
     return y;
 }
 
+let randomrandom = Math.floor(Math.random() * 3 + 0);
+
+function randomness(){
+    //let result;
+    let randomColor = Math.floor(Math.random() * 3 + 0);    // 0 chiqdi desak
+    
+    /*if(randomColor === par){
+        randomness(par)
+    } else {
+        result = randomColor;
+    }*/
+
+    return randomColor;
+}
+
 function giveCards(){
 
     let actuelCard;
     const colorArray = ["greenCards", "brownCards", "blueCards"];
     const colorImgs = ["green", "brown", "blue"];
     let realcolor;
-
-    let randomColor;
+    console.log("Initialization: " + randomrandom);
 
     if(counter1 > 0){
-        //randomColor = Math.floor(Math.random() * 2 + 0);    // 0 chiqdi desak
+
+        if(randomrandom === 0){
+            if(gameArray[0].greenCards > 0){
+                actuelCard = newGreens.shift()
+                realcolor = "green";
+                gameArray[0].greenCards--;
+                firststage[0].textContent = gameArray[0].greenCards;
+                counter1--;
+            } else {
+                //randomrandom = randomness()
+                randomrandom = Math.floor(Math.random() * (2 - 1 + 1) + 1);    // 0 chiqdi desak
+                giveCards();
+            }
+        }
+        else if(randomrandom === 1){
+            if(gameArray[0].brownCards > 0){
+                actuelCard = newBrowns.shift()
+                realcolor = "brown";
+                gameArray[0].brownCards--;
+                firststage[1].textContent = gameArray[0].brownCards;
+                counter1--;
+            } else {
+                while(randomrandom === 1){
+                    randomrandom = randomness();
+                }
+                giveCards();
+            }
+        }
+        else if(randomrandom === 2){
+            if(gameArray[0].blueCards > 0){
+                actuelCard = newBlues.shift()
+                realcolor = "blue";
+                gameArray[0].blueCards--;
+                firststage[2].textContent = gameArray[0].blueCards;
+                counter1--;
+            } else {
+                randomrandom = Math.floor(Math.random() * (1 - 0 + 1) + 0);    // 0 chiqdi desak
+                giveCards();
+            }
+        }
+
+
+        if(gameArray[0].greenCards === 0){
+            while(randomrandom === 0){
+                randomrandom = randomness();
+            }
+        } else if(gameArray[0].brownCards === 0){
+            while(randomrandom === 1){
+                randomrandom = randomness();
+            }
+        } else if(gameArray[0].blueCards === 0){
+            while(randomrandom === 2){
+                randomrandom = randomness();
+            }
+        }
+
+
+        else if(gameArray[0].greenCards === 0 && gameArray[0].brownCards === 0){
+            randomrandom = 2;
+        }
+        else if(gameArray[0].greenCards === 0 && gameArray[0].blueCards === 0){
+            randomrandom = 1;
+        }
+        else if(gameArray[0].brownCards === 0 && gameArray[0].blueCards === 0){
+            randomrandom = 0;
+        }
+
+
+        /*
+        if(gameArray[0].greenCards > 0 && gameArray[0].brownCards > 0 && gameArray[0].blueCards > 0){
+            
+            if(randomrandom === 0){
+                actuelCard = newGreens.shift()
+                realcolor = "green";
+                gameArray[0].greenCards--;
+                firststage[0].textContent = gameArray[0].greenCards;
+                
+                console.log(randomrandom)
+
+            } else if (randomrandom === 1){
+                actuelCard = newBrowns.shift()
+                realcolor = "brown";
+                gameArray[0].brownCards--;
+                firststage[1].textContent = gameArray[0].brownCards;
+
+                console.log(randomrandom)
+
+            } else if (randomrandom === 2){
+                actuelCard = newBlues.shift()
+                realcolor = "blue";
+                gameArray[0].blueCards--;
+                firststage[2].textContent = gameArray[0].blueCards;
+
+                console.log(randomrandom)
+            }
+            
+        } else if (gameArray[0].greenCards === 0 && gameArray[0].brownCards > 0 && gameArray[0].blueCards > 0){
+            console.log("Greens equal to zero")
+        }
+
+        else if (gameArray[0].greenCards > 0 && gameArray[0].brownCards === 0 && gameArray[0].blueCards > 0){
+            console.log("Browns equal to zero")
+        }
+
+        else if (gameArray[0].greenCards > 0 && gameArray[0].brownCards > 0 && gameArray[0].blueCards === 0){
+            console.log("Blues equal to zero")
+        } */
         
+        /*
         if(gameArray[0].greenCards > 0){
             actuelCard = newGreens.shift()
             realcolor = "green";
@@ -106,10 +227,10 @@ function giveCards(){
 
                 }
             }
-        }
+        } */
 
         console.log("First stage " + counter1)
-        counter1--;
+        //counter1--;
     } 
     
     else if(counter2 > 0){
