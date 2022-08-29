@@ -107,6 +107,7 @@ function giveCards(){
             } else {
                 //randomrandom = randomness()
                 randomrandom = Math.floor(Math.random() * (2 - 1 + 1) + 1);    // 0 chiqdi desak
+                //randomrandom = 1;
                 giveCards();
             }
         }
@@ -117,10 +118,12 @@ function giveCards(){
                 gameArray[0].brownCards--;
                 firststage[1].textContent = gameArray[0].brownCards;
                 counter1--;
+                randomrandom = 2;
             } else {
-                while(randomrandom === 1){
+                /*while(randomrandom === 1){
                     randomrandom = randomness();
-                }
+                }*/
+                randomrandom = 2;
                 giveCards();
             }
         }
@@ -133,11 +136,12 @@ function giveCards(){
                 counter1--;
             } else {
                 randomrandom = Math.floor(Math.random() * (1 - 0 + 1) + 0);    // 0 chiqdi desak
+                //randomrandom = 0;
                 giveCards();
             }
         }
 
-
+        /*
         if(gameArray[0].greenCards === 0){
             while(randomrandom === 0){
                 randomrandom = randomness();
@@ -150,18 +154,21 @@ function giveCards(){
             while(randomrandom === 2){
                 randomrandom = randomness();
             }
-        }
+        }*/
 
-
+        /*
         else if(gameArray[0].greenCards === 0 && gameArray[0].brownCards === 0){
             randomrandom = 2;
+            giveCards();
         }
         else if(gameArray[0].greenCards === 0 && gameArray[0].blueCards === 0){
             randomrandom = 1;
+            giveCards();
         }
         else if(gameArray[0].brownCards === 0 && gameArray[0].blueCards === 0){
             randomrandom = 0;
-        }
+            giveCards();
+        }*/
 
         console.log("First stage " + counter1)
     } 
@@ -174,10 +181,13 @@ function giveCards(){
                 gameArray[1].greenCards--;
                 secondstage[0].textContent = gameArray[1].greenCards;
                 counter2--;
+                randomrandom = Math.floor(Math.random() * (2 - 1 + 1) + 1);
             } else {
                 //randomrandom = randomness()
                 randomrandom = Math.floor(Math.random() * (2 - 1 + 1) + 1);    // 0 chiqdi desak
+                //randomrandom = 1;
                 giveCards();
+                
             }
         }
         else if(randomrandom === 1){
@@ -187,10 +197,12 @@ function giveCards(){
                 gameArray[1].brownCards--;
                 secondstage[1].textContent = gameArray[1].brownCards;
                 counter2--;
+                randomrandom = 2;
             } else {
-                while(randomrandom === 1){
+                /*while(randomrandom === 1){
                     randomrandom = randomness();
-                }
+                }*/
+                randomrandom = 2;
                 giveCards();
             }
         }
@@ -200,14 +212,16 @@ function giveCards(){
                 realcolor = "blue";
                 gameArray[1].blueCards--;
                 secondstage[2].textContent = gameArray[1].blueCards;
-                counter1--;
+                counter2--;
+                randomrandom = Math.floor(Math.random() * (1 - 0 + 1) + 0);
             } else {
                 randomrandom = Math.floor(Math.random() * (1 - 0 + 1) + 0);    // 0 chiqdi desak
+                //randomrandom = 0;
                 giveCards();
             }
         }
 
-
+        /*
         if(gameArray[1].greenCards === 0){
             while(randomrandom === 0){
                 randomrandom = randomness();
@@ -220,18 +234,21 @@ function giveCards(){
             while(randomrandom === 2){
                 randomrandom = randomness();
             }
-        }
+        }*/
 
-
+        /*
         else if(gameArray[1].greenCards === 0 && gameArray[1].brownCards === 0){
             randomrandom = 2;
+            giveCards();
         }
         else if(gameArray[1].greenCards === 0 && gameArray[1].blueCards === 0){
             randomrandom = 1;
+            giveCards();
         }
         else if(gameArray[1].brownCards === 0 && gameArray[1].blueCards === 0){
             randomrandom = 0;
-        }
+            giveCards();
+        } */
 
         console.log("Second stage " + counter2)
     } 
@@ -244,9 +261,11 @@ function giveCards(){
                 gameArray[2].greenCards--;
                 thirdstage[0].textContent = gameArray[2].greenCards;
                 counter3--;
+                randomrandom = Math.floor(Math.random() * (2 - 1 + 1) + 1);
             } else {
                 //randomrandom = randomness()
                 randomrandom = Math.floor(Math.random() * (2 - 1 + 1) + 1);    // 0 chiqdi desak
+                //randomrandom = 1;
                 giveCards();
             }
         }
@@ -257,10 +276,12 @@ function giveCards(){
                 gameArray[2].brownCards--;
                 thirdstage[1].textContent = gameArray[2].brownCards;
                 counter3--;
+                randomrandom = 2;
             } else {
-                while(randomrandom === 1){
+                /*while(randomrandom === 1){
                     randomrandom = randomness();
-                }
+                }*/
+                randomrandom = 2;
                 giveCards();
             }
         }
@@ -271,13 +292,15 @@ function giveCards(){
                 gameArray[2].blueCards--;
                 thirdstage[2].textContent = gameArray[2].blueCards;
                 counter3--;
+                randomrandom = Math.floor(Math.random() * (1 - 0 + 1) + 0);
             } else {
                 randomrandom = Math.floor(Math.random() * (1 - 0 + 1) + 0);    // 0 chiqdi desak
+                //randomrandom = 0;
                 giveCards();
             }
         }
 
-
+        /*
         if(gameArray[2].greenCards === 0){
             while(randomrandom === 0){
                 randomrandom = randomness();
@@ -290,18 +313,21 @@ function giveCards(){
             while(randomrandom === 2){
                 randomrandom = randomness();
             }
-        }
+        }   */
 
-
+        /*
         else if(gameArray[2].greenCards === 0 && gameArray[2].brownCards === 0){
             randomrandom = 2;
+            giveCards();
         }
         else if(gameArray[2].greenCards === 0 && gameArray[2].blueCards === 0){
             randomrandom = 1;
+            giveCards();
         }
         else if(gameArray[2].brownCards === 0 && gameArray[2].blueCards === 0){
             randomrandom = 0;
-        }
+            giveCards();
+        } */
 
         console.log("Third stage " + counter3)
     }
