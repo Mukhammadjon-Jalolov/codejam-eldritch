@@ -46,6 +46,7 @@ let gameover = document.getElementById("gameover");
 function startGame(){
     cardsTable.style.visibility = "visible";
     gamecardEl.style.visibility = "visible";
+    gameover.style.visibility = "hidden";
 
     firststage[0].textContent = current1stage.greenCards;
     firststage[1].textContent = current1stage.brownCards;
